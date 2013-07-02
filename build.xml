@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-    name="KerberosAppActivity"
+    name="kerberos-android"
     default="help" >
 
     <!--
@@ -108,7 +108,7 @@
     -->
     <!-- version-tag: 1 -->
 
-    <target name="-post-compile" >
+    <target name="native" >
 
         <javah
             classpath="${out.dir}/classes"
@@ -143,8 +143,6 @@
 
             <arg value="clean" />
         </exec>
-
-        <delete file="jni/edu_mit_kerberos_KerberosOperations.h" />
     </target>
 
     <import file="${sdk.dir}/tools/ant/build.xml" />
