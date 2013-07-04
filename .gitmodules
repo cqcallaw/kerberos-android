@@ -1,3 +1,0 @@
-[submodule "src/net/brainvitamins/state"]
-	path = src/net/brainvitamins/state
-	url = git://github.com/cqcallaw/state-manager.git
