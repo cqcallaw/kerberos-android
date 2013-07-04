@@ -1,24 +1,17 @@
+Kerberos Android Java Wrapper
 
-Kerberos Android NDK Sample Application
-
-This is a sample Android NDK application which acts as a simple GUI wrapper
+This is a sample Android NDK library which acts as a simple wrapper
 around the MIT Kerberos kinit, klist, kvno, and kdestroy client 
-applications as well as provides a sample client which uses the Java 
-GSS-API interface. The GSS-API interface is a Java wrapper for the existing 
-Kerberos GSS-API C-bindings and was created using SWIG. 
+applications.
 
 This package includes cross-compiled versions of the MIT Kerberos
 libraries as well as the CyaSSL Embedded SSL Library. It should be 
 helpful to Android developers who are interested in using the 
-Kerberos libraries or the GSS-API interface in their own Android NDK 
-Applications.
+Kerberos libraries in their own Android NDK Applications.
 
 By default, this package uses pre-built static Kerberos and CyaSSL 
-libraries which are needed in order to be linked to the KerberosApp 
-application's native library (libkerberosapp.so).
-
-For detailed information on the Java GSS-API interface, please see the
-GSSAPI_README file included in this project's root directory.
+libraries which are needed in order to be linked to the native library
+(libkerberosapp.so).
 
 ===========================================================================
 REQUIREMENTS:
@@ -29,67 +22,40 @@ Android Emulator set up and configured with an Android platform greater
 than or equal to version 2.3.3 (Gingerbread). For details on downloading and 
 setting these up, please see the following links:
 
-Android SDK:  http://developer.android.com/sdk/index.html
-Android NDK:  http://developer.android.com/sdk/ndk/index.html
+Android SDK: http://developer.android.com/sdk/index.html
+Android NDK: http://developer.android.com/sdk/ndk/index.html
 Android Emulator:
 https://developer.android.com/guide/developing/tools/emulator.html
 
 ===========================================================================
 BUILDING:
 
-To build and install this package, including Java GSS-API bindings, run
-the following commands. If you would like to use the GSS-API example
-client, please update your client and server settings in
-./src/edu/mit/kerberos/KerberosAppActivity.java before building the project.
+The package is not meant to be used stand-alone, but a reference build system
+is provided. To run the reference build:
 
 android update project -p . -s
-swig -java -package edu.mit.kerberos -outdir ./src/edu/mit/kerberos
-     -o ./jni/gsswrapper_wrap.c ./jni/gsswrapper.i
-ndk-build
 ant debug
+
+To rebuild the Java wrapper:
+
+ant native
 
 If you want to rebuild the pre-built Kerberos libraries, please use the
 android-config.sh shell script. This will allow the MIT Kerberos libraries
 to be cross-compiled for the Android platform. More detailed instructions 
 can be found in the script comments.
 
-NOTE: The SWIG GSS-API wrapper code takes care of loading the shared
-library using the System.loadLibrary(...) method. This means that you
-don't have to call System.loadLibrary() from your Java application 
-code, but you will need to verify the library name is correct in
-gsswrapper.i before running the "swig", "ndk-build", and "ant debug"
-commands.
-
 ===========================================================================
-INSTALLING:
+USAGE:
 
-To install this package in a running Android emulator, run:
-
-ant install
-
-Before running the KerberosApp application, the user needs to install both
-a Keytab file and a Kerberos configuration file. Reference the MIT Kerberos
-documentation for guidelines for creating these files. Once created, they
-can be installed using the adb push command, using:
-
-adb push <local-file-path> <destination-file-path>
-
-For example, to load a krb5.conf and krb5.keytab file from the current 
-directory to an Android emulator under the /data/local/kerberos 
-directory, run:
-
-adb push krb5.conf /data/local/kerberos/
-adb push krb5.keytab /data/local/kerberos/
-
-The keytab file needs to contain an entry for the client principal (whose
-TGT will be obtained by using the "kinit" button in the sample Application.
-In order for the example client functionality to work, this same principal
-must be entered in KerberosAppActivity.java as clientName.
+1) Copy jni/Android.mk to your app's jni folder, updating paths as needed
+2) Copy assets/krb5.conf to your app's assets folder
+3) Build the app as you would any other NDK app.
 
 NOTE: hosts file
 ----------------
-If you need to edit the hosts file on the android emulator to accomidate for
-KDC locations, use the following steps:
+If you need to edit the hosts file on the Android emulator to provide name
+resolution for the KDC, use the following steps:
 
 emulator -avd <name> -partition-size 128
 adb remount
@@ -107,7 +73,6 @@ Kerberos config file:   /data/local/kerberos/krb5.conf
 Credentials cache:      /data/local/kerberos/ccache/krb5cc_<uid>
 Keytab:                 /data/local/kerberos/krb5.keytab
 
-The credentials cache location may be changed in KerberosAppActivity.java.
 The Kerberos config file and keytab file locations may be changed by editing
 the default locations in ./include/osconf.h when cross compiling the MIT 
 kerberos libraries.
@@ -170,8 +135,3 @@ MIT Kerberos Libraries: ---------------------------------------------------
  * or implied warranty.
 
 ===========================================================================
-SUPPORT:
-
-If you have any questions or comments, please contact
-support@yassl.com or the MIT Kerberos community.
-
