@@ -1,17 +1,17 @@
 Kerberos Android Java Wrapper
 
 This is a sample Android NDK library which acts as a simple wrapper
-around the MIT Kerberos kinit, klist, kvno, and kdestroy client 
-applications.
+This project contains a Java wrapper around the MIT Kerberos kinit, klist,
+kvno, and kdestroy operations.
 
-This package includes cross-compiled versions of the MIT Kerberos
-libraries as well as the CyaSSL Embedded SSL Library. It should be 
+The project includes cross-compiled versions of the MIT Kerberos
+libraries as well as the CyaSSL Embedded SSL Library. It should be
 helpful to Android developers who are interested in using the 
 Kerberos libraries in their own Android NDK Applications.
 
-By default, this package uses pre-built static Kerberos and CyaSSL 
-libraries which are needed in order to be linked to the native library
-(libkerberosapp.so).
+By default, this package uses pre-built static Kerberos and CyaSSL
+libraries which are needed in order to be linked to an application's native
+library.
 
 ===========================================================================
 REQUIREMENTS:
@@ -19,7 +19,7 @@ REQUIREMENTS:
 Before building or installing this package, you must have the Android SDK
 and NDK installed and set up on your system. It is also helpful to have the
 Android Emulator set up and configured with an Android platform greater
-than or equal to version 2.3.3 (Gingerbread). For details on downloading and 
+than or equal to version 2.3.3 (Gingerbread). For details on downloading and
 setting these up, please see the following links:
 
 Android SDK: http://developer.android.com/sdk/index.html
@@ -48,10 +48,17 @@ can be found in the script comments.
 ===========================================================================
 USAGE:
 
-1) Copy jni/Android.mk to your app's jni folder, updating paths as needed
-2) Copy assets/krb5.conf to your app's assets folder
-3) Build the app as you would any other NDK app.
+To be of true usefulness, the project must be integrated into an Android NDK app.
+The file jni/Android.mk is a template for this integration. Simply adjust the 
+paths to match the project layout, and run ndk-build as usual.
 
+===========================================================================
+CONFIGURATION:
+A Kerberos configuration file is required by most operations. Reference the MIT 
+Kerberos documentation for guidelines on creating this file. Once created, the
+file can be deployed as an app asset, or pushed using the adb push command:
+For example, to load a krb5.conf file from the current 
+Kerberos keytab files can be pushed in the same way.
 NOTE: hosts file
 ----------------
 If you need to edit the hosts file on the Android emulator to provide name
@@ -66,11 +73,7 @@ adb push ./hosts /system/etc
 ===========================================================================
 DEFAULT STORAGE LOCATIONS:
 
-The following locations are the default paths used for the Kerberos
-sample application.
-
 Kerberos config file:   /data/local/kerberos/krb5.conf
-Credentials cache:      /data/local/kerberos/ccache/krb5cc_<uid>
 Keytab:                 /data/local/kerberos/krb5.keytab
 
 The Kerberos config file and keytab file locations may be changed by editing
