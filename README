@@ -1,6 +1,5 @@
 Kerberos Android Java Wrapper
 
-This is a sample Android NDK library which acts as a simple wrapper
 This project contains a Java wrapper around the MIT Kerberos kinit, klist,
 kvno, and kdestroy operations.
 
