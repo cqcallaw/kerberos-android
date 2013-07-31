@@ -55,9 +55,16 @@ paths to match the project layout, and run ndk-build as usual.
 CONFIGURATION:
 A Kerberos configuration file is required by most operations. Reference the MIT 
 Kerberos documentation for guidelines on creating this file. Once created, the
-file can be deployed as an app asset, or pushed using the adb push command:
-For example, to load a krb5.conf file from the current 
+file can be deployed as an app asset, or pushed using the adb push command.
+
+For example, to load a krb5.conf and krb5.keytab file from the current 
+directory to an Android emulator under the /data/local/kerberos 
+directory, run:
+
+adb push krb5.conf /data/local/kerberos/
+
 Kerberos keytab files can be pushed in the same way.
+
 NOTE: hosts file
 ----------------
 If you need to edit the hosts file on the Android emulator to provide name
