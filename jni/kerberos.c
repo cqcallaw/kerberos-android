@@ -1,5 +1,5 @@
 /*
- * kerberosapp.c
+ * kerberos.c
  *
  * Copyright (C) 2012 by the Massachusetts Institute of Technology.
  * All rights reserved.
@@ -31,7 +31,7 @@
 #include <stdlib.h>
 
 #include "edu_mit_kerberos_KerberosOperations.h"
-#include "kerberosapp.h"
+#include "kerberos.h"
 
 /* Global JNI Variables */
 JavaVM* cached_jvm;

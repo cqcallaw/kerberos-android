@@ -39,7 +39,7 @@
 #include <com_err.h>
 
 #ifdef ANDROID
-#include "kerberosapp.h"
+#include "kerberos.h"
 static JNIEnv* jni_env;
 static jobject class_obj;
 

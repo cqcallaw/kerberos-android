@@ -1,5 +1,5 @@
 /*
- * kerberosapp.h
+ * kerberos.h
  *
  * Copyright (C) 2012 by the Massachusetts Institute of Technology.
  * All rights reserved.
@@ -25,7 +25,7 @@
  *
  * Original source developed by yaSSL (http://www.yassl.com)
  *
- * Header file for kerberosapp.c prototypes
+ * Header file for kerberos.c prototypes
  *
  */
 

@@ -26,7 +26,7 @@ import android.util.Log;
 
 public abstract class KerberosOperation {
 	static {
-		System.loadLibrary("kerberosapp");
+		System.loadLibrary("kerberos");
 	}
 
 	public static final String LOG_TAG = "KerberosOperation";

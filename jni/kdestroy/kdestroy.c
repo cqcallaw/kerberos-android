@@ -43,7 +43,7 @@
 #endif
 
 #ifdef ANDROID
-#include "kerberosapp.h"
+#include "kerberos.h"
 static JNIEnv* jni_env; 
 static jobject class_obj;
 #else

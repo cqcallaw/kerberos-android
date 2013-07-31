@@ -63,13 +63,13 @@ include $(PREBUILT_STATIC_LIBRARY)
 ## Kerberos operations
 include $(CLEAR_VARS)
 
-LOCAL_MODULE     := libkerberosapp
+LOCAL_MODULE     := libkerberos
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/include \
                     $(LOCAL_PATH)/kinit \
                     $(LOCAL_PATH)/kinit/include \
                     $(LOCAL_PATH)/klist/include
-LOCAL_SRC_FILES  := kerberosapp.c \
+LOCAL_SRC_FILES  := kerberos.c \
                     kinit/kinit.c \
                     kinit/kinit_kdb.c \
                     klist/klist.c \
